@@ -169,11 +169,11 @@
 
 
 
-#### 练习详情
+#### 练习详情(试题)
 
 **描述：**
 
-- 获取指定练习内容
+- 获取指定练习内容(未完成试题内容)
 
 **请求URL：**
 
@@ -592,7 +592,7 @@
 
 **请求URL：**
 
-- /api/practise/log/:id/analysis
+- /api/practise/:pid/log/:id/analysis
 
 **请求方式:**
 
@@ -632,7 +632,7 @@
   "CA": "A",
   "IC": true,
   "CR": 0.6,
-  "analysis": 'XXXXX',
+  "analysis": "XXXXX",
   "KN": [
     "XXXX"
   ],
@@ -643,8 +643,8 @@
   	}
   ]
   "reason": [
-    {"type": "offical", "content":['1']},
-    {"type": "media", "content": 'XXX'}
+    {"type": "offical", "content":["1"]},
+    {"type": "media", "content": "XXX"}
   ],
   "officalReason": [
     {
@@ -682,8 +682,8 @@
   	}
   ]
   "reason": [
-  	{"type": "offical", "content":['1']}
-    {"type": "media", "content": 'XXX'}
+  	{"type": "offical", "content":["1"]}
+    {"type": "media", "content": "XXX"}
   ],
   "officalReason": [
     {
@@ -699,7 +699,7 @@
 *失败*
 
 ```json
-{code: 40010, errMessage: '找不到该试题！'}
+{"code": 40010, "errMessage": "找不到该试题！"}
 ```
 
 | 参数                    |                    描述                    |
@@ -796,9 +796,9 @@
 
 ```json
 {
-  cause: [
-    {type: "offical", data : ['id','id']},
-    {type: "media",  data: ['mediaId','mediaId']}
+  "reason": [
+    {"type": "offical", "data" : ["id", "id"]},
+    {"type": "media",  "data": ["mediaId", "mediaId"]}
   ]
 }
 ```
@@ -913,7 +913,7 @@
   "ability": 30,
   "courseAbility": 121,
   "data": [
-    {"value": 0.12, "name": '空间与图形'}
+    {"value": 0.12, "name": "空间与图形"}
   ]
 }
 ```
@@ -1018,7 +1018,7 @@
   "data": [
     {
       "id": "1",
-      "date": '2017-06-30 14:02',
+      "date": "2017-06-30 14:02",
       "course": "chi",
       "status": "success",
       "chapter": "第一单元",
@@ -1121,9 +1121,9 @@
 
 **参数:**
 
-| 参数   | 是否必须 |    说明    |
-| ---- | :--: | :------: |
-| id   |  是   | 作业(闯关)id |
+| 参数   | 是否必须 |   说明   |
+| ---- | :--: | :----: |
+| id   |  是   | 闯关纪录id |
 
 **返回结果:**
 
@@ -1215,10 +1215,10 @@
 ```json
 {
   "code": 0,
-  "course": 'math',
-  "module": '模块1',
-  "chapter": '第一章',
-  "KN": "知识点1',
+  "course": "math",
+  "module": "模块1",
+  "chapter": "第一章",
+  "KN": "知识点1",
   "KNid": "1",
   "checkpoint": 2,
   "ability": 760,
@@ -1286,7 +1286,7 @@
   "data": [
     {
       "id": "1",
-      "question": '第一次十字军东征的时间是？',
+      "question": "第一次十字军东征的时间是？",
       "selection": [
   		{"key":"A", "value":"1096-1099"},
 		{"key":"B": "value":"1147-1148"},
@@ -1401,7 +1401,7 @@
 ```json
 {
   "code": 0,
-  "name": '小飞机',
+  "name": "小飞机",
   "classRank": 22,
   "classSize": 55,
   "gradeRank": 121,
@@ -1465,8 +1465,8 @@
   "totalMistakes": 90,
   "data": [
     {
-      "KN": '古代诗文阅读',
-      "KNId": '1',
+      "KN": "古代诗文阅读",
+      "KNId": "1",
       "children": [
         {
           "KN": "文章内容归纳，中心概括",
@@ -1540,7 +1540,7 @@
   "data": {
     "type": "choice",
     "id": "1",
-    "title": '1．下列各组词语中，没有错别字的一组是（）',
+    "title": "1．下列各组词语中，没有错别字的一组是（）",
     "selection": [
        "key": "A", "value": "涟漪        踌躇      气势磅薄     诎诎",
        "key": "B", "value": "萧瑟        寂寥      诲莫如深     星辉斑澜",
@@ -1652,6 +1652,7 @@
 | deadline    |        截止日期(***新布置作业限定***)        |
 | correctTime |        批改时间(***批改作业限定***)         |
 | time        |         推送日期(***推荐限定***)          |
+| id          |            练习／练习纪录 标识             |
 
 
 
