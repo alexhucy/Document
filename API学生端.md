@@ -156,7 +156,7 @@
 
 | 参数          |                    说明                    |
 | ----------- | :--------------------------------------: |
-| id          |                   唯一标识                   |
+| id          | 练习纪录／练习标识(status为tbd，为练习标识.status为completed以及report时，为练习纪录标识) |
 | type        |          练习类型(task:作业, exam:试卷)          |
 | course      |            科目(详情见表***学科说明***)            |
 | title       |                   练习题目                   |
@@ -173,7 +173,7 @@
 
 **描述：**
 
-- 获取指定练习详情
+- 获取指定练习内容
 
 **请求URL：**
 
@@ -334,15 +334,15 @@
 
 
 
-#### 已完成内容详情
+#### 已批改内容详情
 
 **描述：**
 
-- 获取已完成作业考试内容
+- 获取已批改作业考试内容
 
 **请求URL：**
 
-- /api/practice/:id/done 
+- /api/practice/log/:id
 
 **请求方式:**
 
@@ -350,9 +350,9 @@
 
 **参数：**
 
-| 参数   | 是否必须 |  说明   |
-| ---- | :--: | :---: |
-| id   |  是   | 已完成练习 |
+| 参数   | 是否必须 |   说明   |
+| ---- | :--: | :----: |
+| id   |  是   | 练习纪录id |
 **返回结果:**
 
 *成功:*
@@ -468,7 +468,7 @@
 
 | 参数                              |                    描述                    |
 | ------------------------------- | :--------------------------------------: |
-| id                              |                  练习唯一标识                  |
+| id                              |                  练习纪录标识                  |
 | type                            |         练习类型(task: 作业, exam: 试卷)         |
 | title                           |                   练习标题                   |
 | course                          |                    学科                    |
@@ -509,9 +509,9 @@
 
 **参数：**
 
-| 参数   | 是否必须 |   说明    |
-| ---- | :--: | :-----: |
-| id   |  是   | 已完成试卷id |
+| 参数   | 是否必须 |    说明     |
+| ---- | :--: | :-------: |
+| id   |  是   | 已完成试卷纪录id |
 
 **返回结果:**
 
@@ -584,16 +584,166 @@
 
 
 
+#### 习题解析
+
+**描述:**
+
+- 获取指定收藏试题信息
+
+**请求URL：**
+
+- /api/practise/log/:id/analysis
+
+**请求方式:**
+
+- GET
+
+**参数：**
+
+| 参数   | 是否必须 |   说明   |
+| ---- | :--: | :----: |
+| id   |  是   |  题目id  |
+| pid  |  是   | 练习纪录id |
+
+**返回结果:**
+
+*成功*
+
+```json
+{
+  "code": 0,
+  "type": "choice",
+  "id": "1",
+  "NO": "1",
+  "title": "1．下列各组词语中，没有错别字的一组是（）",
+  "selection": [
+  		{"key":"A", "value":"1096-1099"},
+		{"key":"B": "value":"1147-1148"},
+		{"key":"C", "value": "1189-1193"},
+        {"key":"D": "value": "1201-1204"}
+      ],
+  "from": {
+    "date": "2017-05-30",
+    "type": "task",
+    "title": "语文作业",
+    "id": "1",
+  },
+  "answer": "A",
+  "CA": "A",
+  "IC": true,
+  "CR": 0.6,
+  "analysis": 'XXXXX',
+  "KN": [
+    "XXXX"
+  ],
+  "remark": [
+    {
+      "type": "media",
+      "content": "XXX",
+  	}
+  ]
+  "reason": [
+    {"type": "offical", "content":['1']},
+    {"type": "media", "content": 'XXX'}
+  ],
+  "officalReason": [
+    {
+      "id": "1",
+      "content": "看错"
+    } 
+  ]
+}
+```
+
+```json
+#主观题
+{
+  "code": 0,
+  "type": "subjective",
+  "id": "1",
+  "NO": "5",
+  "title": "斯是陋室，唯吾德馨",
+  "answer": "XXXX",
+  "score": 5,
+  "CA": "这是简陋的房子，只是我的品德好",
+  "analysis": "XXXXX",
+  "IC": true,
+  "KN": ["XX"],
+  "from": {
+    "date": "2017-05-30",
+    "type": "task",
+    "title": "语文作业",
+    "id": "1",
+  },
+  "remark": [
+    {
+      "type": "media",
+      "content": "XXX",
+  	}
+  ]
+  "reason": [
+  	{"type": "offical", "content":['1']}
+    {"type": "media", "content": 'XXX'}
+  ],
+  "officalReason": [
+    {
+      "id": "1",
+      "content": "看错"
+    }
+  ]
+}
+```
+
+
+
+*失败*
+
+```json
+{code: 40010, errMessage: '找不到该试题！'}
+```
+
+| 参数                    |                    描述                    |
+| --------------------- | :--------------------------------------: |
+| type                  |      试题类型(choice:单选题,  blank: 填空题)       |
+| id                    |                   习题标识                   |
+| NO                    |                   习题序号                   |
+| title                 |                   试题名称                   |
+| selection             |            选择题选项(***选择题限定***)            |
+| from                  |                   试题来源                   |
+| from.date             |                   练习时间                   |
+| from.type             |      练习类型(task:作业,exam:试卷,raid:闯关)       |
+| from.title            |                   练习题目                   |
+| from.id               |                  练习纪录id                  |
+| answer                |                   我的答案                   |
+| CA                    |                   正确答案                   |
+| IC                    |          是否正确（true:正确，false:错误）          |
+| CR                    |                   正确率                    |
+| analysis              |                   答案分析                   |
+| KN                    |                知识点名称（集合）                 |
+| remark                |                  备注/反思                   |
+| remark.type           |                   备注类型                   |
+| remark.content        |      备注内容, ***type为media时，内容为url***      |
+| reason                |          错误原因(***IC为false限定***)          |
+| reason.type           | 输出类型(media:多媒体（语音）, text: 文本,  offical:系统给出的原因 |
+| reason.content        |      错误原因, ***type为media时，内容为url***      |
+| officalReason         |               系统给出的错误原因集合                |
+| officalReason.id      |                 系统错误原因标识                 |
+| officalReason.content |                 系统错误原因内容                 |
+
+
+
 #### 新增语音备注/反思 
 
 **描述：**
 
 - 给指定习题添加语音备注(正确题目)
 - 给指定习题添加语音反思(错误题目)
+- 只能给已经批改过的练习中的习题添加
+- 更新数据时，将更新后的数据全部上传
 
 **请求URL：**
 
-- /api/practise/question/:id/remark/
+- /api/practise/id/remark/
 
 **请求方式:**
 
@@ -601,11 +751,10 @@
 
 **参数：**
 
-| 参数      | 是否必须 |  说明  |
-| ------- | :--: | :--: |
-| id      |  是   | 习题id |
-| mediaId |  是   | 语音id |
-| pid     |  是   | 练习id |
+| 参数      | 是否必须 |   说明   |
+| ------- | :--: | :----: |
+| id      |  是   | 习题纪录id |
+| mediaId |  是   | 多媒体id  |
 
 **返回结果:**
 
@@ -627,6 +776,46 @@
 ```
 
 
+
+#### 新增错因分析
+
+**描述：**
+
+- 上传题目错因
+- 错因更新，将所有数据重新上传
+
+**请求URL：**
+
+- /api/practise/:id/cause/
+
+**请求方式:**
+
+- POST
+
+**参数：**
+
+```json
+{
+  cause: [
+    {type: "offical", data : ['id','id']},
+    {type: "media",  data: ['mediaId','mediaId']}
+  ]
+}
+```
+
+| 参数           | 是否必须 |                说明                 |
+| ------------ | :--: | :-------------------------------: |
+| id           |  是   |              练习纪录id               |
+| type         |  是   | 错因类型(offical:题目自带错因， media:多媒体数据) |
+| data         |  是   |               撮影内容                |
+| data.id      |  是   |             题目自带错因id              |
+| data.mediaId |  是   |              多媒体数据id              |
+
+**返回结果:**
+
+```json
+{"code":0}
+```
 
 
 
@@ -693,11 +882,11 @@
 
 
 
-#### 学科能力值细化
+#### 学科能力值知识点构成
 
 **描述：**
 
-- 获取指定模块的环形图数据
+- 获取指定模块知识点构成的环形图数据
 
 **请求URL：**
 
@@ -1368,18 +1557,18 @@
 }
 ```
 
-| 参数             |                    描述                    |
-| -------------- | :--------------------------------------: |
-| data           |                   题目列表                   |
-| data.type      | 试题类型(choice:单选题,  blank: 填空题，  subjective:主观题目) |
-| data.id        |                   题目id                   |
-| data.title     |                   试题名称                   |
-| data.selection |            选择题选项(***选择题限定***)            |
-| from           |                   试题来源                   |
-| from.date      |                   练习时间                   |
-| from.type      |          练习类型(task:作业,exam:试卷)           |
-| from.title     |                   练习名称                   |
-| from.id        |                 练习／闯关id                  |
+| 参数             |              描述               |
+| -------------- | :---------------------------: |
+| data           |             题目列表              |
+| data.type      | 试题类型(choice:单选题,  blank: 填空题) |
+| data.id        |            习题纪录id             |
+| data.title     |             试题名称              |
+| data.selection |      选择题选项(***选择题限定***)       |
+| from           |             试题来源              |
+| from.date      |             练习时间              |
+| from.type      |     练习类型(task:作业,exam:试卷)     |
+| from.title     |             练习名称              |
+| from.id        |            练习／闯关id            |
 
 
 
@@ -1412,125 +1601,6 @@
 
 
 
-#### 习题解析
-
-**描述:**
-
-- 获取指定收藏试题信息
-
-**请求URL：**
-
-- /api/practise/:pid/question/:id/analysis
-
-**请求方式:**
-
-- GET
-
-**参数：**
-
-| 参数   | 是否必须 |  说明  |
-| ---- | :--: | :--: |
-| id   |  是   | 题目id |
-| pid  |  是   | 练习id |
-
-**返回结果:**
-
-*成功*
-
-```json
-{
-  "code": 0,
-  "type": "choice",
-  "id": "1",
-  "title": "1．下列各组词语中，没有错别字的一组是（）",
-  "selection": [
-  		{"key":"A", "value":"1096-1099"},
-		{"key":"B": "value":"1147-1148"},
-		{"key":"C", "value": "1189-1193"},
-        {"key":"D": "value": "1201-1204"}
-      ],
-  "from": {
-    "date": "2017-05-30",
-    "type": "task",
-    "title": "语文作业"
-  },
-  "answer": "A",
-  "CA": "A",
-  "IC": true,
-  "CR": 0.6,
-  "analysis": 'XXXXX',
-  "KN": [
-    "XXXX"
-  ],
-  "remark": [
-    {
-      "type": "media",
-      "content": "XXX",
-  	}
-  ]
-  "cause": [
-    {"type": "text", "content":'看错'},
-    {"type": "media", "content": 'XXX'}
-  ]
-}
-```
-
-```json
-#主观题
-{
-  "code": 0,
-  "type": "subjective",
-  "id": "1",
-  "title": "斯是陋室，唯吾德馨",
-  "answer": "XXXX",
-  "score": 5,
-  "CA": "这是简陋的房子，只是我的品德好",
-  "analysis": "XXXXX",
-  "IC": true,
-  "KN": ["XX"],
-  "remark": [
-    {
-      "type": "media",
-      "content": "XXX",
-  	}
-  ]
-  "cause": [
-    {"type": "text", "content":'看错'},
-    {"type": "media", "content": 'XXX'}
-  ]
-}
-```
-
-
-
-*失败*
-
-```json
-{code: 40010, errMessage: '找不到该试题！'}
-```
-
-| 参数             |               描述               |
-| -------------- | :----------------------------: |
-| type           | 试题类型(choice:单选题,  blank: 填空题)  |
-| title          |              试题名称              |
-| selection      |       选择题选项(***选择题限定***)       |
-| from           |              试题来源              |
-| from.date      |              练习时间              |
-| from.type      | 练习类型(task:作业,exam:试卷,raid:闯关)  |
-| from.title     |              练习题目              |
-| answer         |              我的答案              |
-| CA             |              正确答案              |
-| IC             |     是否正确（true:正确，false:错误）     |
-| CR             |              正确率               |
-| analysis       |              答案分析              |
-| KN             |           知识点名称（集合）            |
-| remark         |             备注/反思              |
-| remark.type    |              备注类型              |
-| remark.content | 备注内容, ***type为media时，内容为url*** |
-| cause          |     错误原因(***IC为false限定***)     |
-| cause.type     | 输出类型(media:多媒体（语音）, text: 文本)  |
-| cause.content  | 错误原因, ***type为media时，内容为url*** |
-
 
 
 ### 消息
@@ -1549,7 +1619,14 @@
 
 - GET
 
-**参数：**
+**参数:**
+
+| 参数   |       描述        |
+| ---- | :-------------: |
+| page | 分页页码(**默认为1**)  |
+| size | 分页条数(**默认为10**) |
+
+**返回结果:**
 
 ```json
 {
@@ -1560,7 +1637,8 @@
       "title": "第一单元检测",
       "course": "math",
       "deadline": "2017-06-22",
-      "auth": "王老师"
+      "auth": "王老师",
+      "id": "1",
     }
   ]
 }
