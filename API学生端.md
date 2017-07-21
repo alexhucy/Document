@@ -118,7 +118,7 @@
 #已完成列表
 {
   "code": 0
-  "data": [
+  "data":[
   	{
       "date": "2017-7-18",
       "collection": [
@@ -197,26 +197,27 @@
   "type": "task",
   "title": "欧洲中世纪史第一课时课后检测",
   "course": "his"
-  "data": [
+  "data":[
     {
       "id": "1",
+  	  "No": "1"	
       "type": "choice",
       "question": "第一次十字军东征的时间是？",
-      "selection": {
-        "A": "1096-1099",
-        "B": "1147-1148",
-        "C": "1189-1193",
-        "D": "1201-1204"
-      },
+      "selection": [
+  		{"key":"A", "value":"1096-1099"},
+		{"key":"B": "value":"1147-1148"},
+		{"key":"C", "value": "1189-1193"},
+        {"key":"D": "value": "1201-1204"}
+      ],
     },
     {
       "id": "2",
+      "NO": "2",
       "type": "objective"
-      "question": "简述宗教改革给欧洲带来了那些影响？",
+      "question":"简述宗教改革给欧洲带来了那些影响？",
     }
   ] 
 }
-
 ```
 
 ```json
@@ -228,19 +229,21 @@
   "title": "欧洲中世纪史第一单元单元卷",
   "course": "his",
   "totalPoints": 100,
+  "duration": 3600
   "data": [
     {
       "type": "choice",
-      "collection": [
+      "collection":[
         {
           "id": "1",
+  		  "NO": "1",
           "question": "第一次十字军东征的时间是？",
-          "selection": {
-            "A": "1096-1099",
-            "B": "1147-1148",
-            "C": "1189-1193",
-            "D": "1201-1204"
-          },
+          "selection": [
+            {"key":"A", "value":"1096-1099"},
+            {"key":"B": "value":"1147-1148"},
+            {"key":"C", "value": "1189-1193"},
+            {"key":"D": "value": "1201-1204"}
+          ],
         }
       ],
       "points": 2,
@@ -251,6 +254,7 @@
       "collection": [
         {
           "id": "2",
+      	  "NO": "2",
       	  "question": "____将亨利四世开除了教籍?"
         }
       ],
@@ -261,21 +265,25 @@
 }
 ```
 
-| 参数            |              描述               |
-| ------------- | :---------------------------: |
-| id            |            练习唯一标识             |
-| type          |   练习类型(task: 作业, exam: 试卷)    |
-| title         |             练习标题              |
-| course        |              科目               |
-| totalPoints   |        总分（***试卷限定***）         |
-| data          |             练习内容              |
-| data.type     | 题目类型(choice:单选题,  blank: 填空题) |
-| collection    |            题型内容列表             |
-| collection.id |            习题唯一标识             |
-| question      |              题干               |
-| selection     |        选项(***单选题限定***)        |
-| points        |              分值               |
-| number        |            题目/空格数量            |
+| 参数              |              描述               |
+| --------------- | :---------------------------: |
+| id              |            练习唯一标识             |
+| type            |   练习类型(task: 作业, exam: 试卷)    |
+| title           |             练习标题              |
+| course          |              科目               |
+| totalPoints     |        总分（***试卷限定***）         |
+| data            |             练习内容              |
+| data.type       | 题目类型(choice:单选题,  blank: 填空题) |
+| collection      |            题型内容列表             |
+| collection.id   |            习题唯一标识             |
+| collection.NO   |             习题序号              |
+| question        |              题干               |
+| selection       |        选项(***单选题限定***)        |
+| selection.key   |             选项名称              |
+| selection.value |             选项内容              |
+| points          |              分值               |
+| number          |            题目/空格数量            |
+| duration        |      计时，***试卷限定***(单位:秒)      |
 
 
 
@@ -312,11 +320,11 @@
 
 
 
-| 参数       | 是否必须 |           说明           |
-| -------- | :--: | :--------------------: |
-| id       |  是   |          练习id          |
-| id(list) |  是   |          题目id          |
-| answer   |  是   | 答案（填空拥有多个答案，将答案放在list） |
+| 参数              | 是否必须 |           说明           |
+| --------------- | :--: | :--------------------: |
+| id (path param) |  是   |          练习id          |
+| id              |  是   |          题目id          |
+| answer          |  是   | 答案（填空拥有多个答案，将答案放在list） |
 
 **返回结果：**
 
@@ -359,6 +367,7 @@
   "data": [
     {
       "id": "1",
+  	  "NO": "1",
       "type": "choice",
       "question": "第一次十字军东征的时间是？",
   	  "KNId": "1",
@@ -368,15 +377,16 @@
   	  "CA": "A",
       "answer": "A",
   	  "IC": true,
-      "selection": {
-        "A": "1096-1099",
-        "B": "1147-1148",
-        "C": "1189-1193",
-        "D": "1201-1204"
-      },
+      "selection": [
+  		{"key":"A", "value":"1096-1099"},
+		{"key":"B": "value":"1147-1148"},
+		{"key":"C", "value": "1189-1193"},
+        {"key":"D": "value": "1201-1204"}
+      ],
     },
     {
       "id": "2",
+      "NO": "2",
       "type": "objective",
       "KNID": "2",
       "KN": "宗教改革",
@@ -407,6 +417,7 @@
       "collection": [
         {
           "id": "1",
+          "NO": "1",
           "question": "第一次十字军东征的时间是？",
           "KNId": "1",
           "KN": "十字军",
@@ -415,12 +426,12 @@
           "CA": "A",
           "answer": "A",
   		  "IC": true,
-          "selection": {
-            "A": "1096-1099",
-            "B": "1147-1148",
-            "C": "1189-1193",
-            "D": "1201-1204"
-          },
+          "selection": [
+            {"key":"A", "value":"1096-1099"},
+            {"key":"B": "value":"1147-1148"},
+            {"key":"C", "value": "1189-1193"},
+            {"key":"D": "value": "1201-1204"}
+          ],
         }
       ],
       "points": 2,
@@ -431,6 +442,7 @@
       "collection": [
         {
           "id": "2",
+      	  "NO": "2",
       	  "question": "____将亨利四世开除了教籍?"
       	  "KNId": "2",
           "KN": "宗教改革",
@@ -454,27 +466,30 @@
 {"code": 40001, "errMessage":"您还没有完成该练习"}
 ```
 
-| 参数                        |                    描述                    |
-| ------------------------- | :--------------------------------------: |
-| id                        |                  练习唯一标识                  |
-| type                      |         练习类型(task: 作业, exam: 试卷)         |
-| title                     |                   练习标题                   |
-| course                    |                    学科                    |
-| totalPoints               |             总分值（***试卷限定***）              |
-| score                     |             总得分(***试卷限定***)              |
-| data                      |                   习题内容                   |
-| data.type                 | 题目类型(choice:单选题,  blank: 填空题，  subjective:主观题目) |
-| collection/data.id        |                  题目唯一标识                  |
-| collection/data.question  |                    题干                    |
-| collection/data.selection |             选项(***单选题限定***)              |
-| collection/data.KN        |                   知识点                    |
-| collection/data.KNId      |                 知识点唯一标识                  |
-| collection/data.CR        |                   正确率                    |
-| collection/data.examine   |         考查能力(记忆、理解、运用、分析、评价、创新)          |
-| collection/data.CA        |                   正确答案                   |
-| collection/data.score     |               **主观题习题限定**                |
-| collection/data.IC        |   是否正确（true:正确， false）, ***非主观题目限定***    |
-| collection/data.answer    |                   我的答案                   |
+| 参数                              |                    描述                    |
+| ------------------------------- | :--------------------------------------: |
+| id                              |                  练习唯一标识                  |
+| type                            |         练习类型(task: 作业, exam: 试卷)         |
+| title                           |                   练习标题                   |
+| course                          |                    学科                    |
+| totalPoints                     |             总分值（***试卷限定***）              |
+| score                           |             总得分(***试卷限定***)              |
+| data                            |                   习题内容                   |
+| data.type                       | 题目类型(choice:单选题,  blank: 填空题，  subjective:主观题目) |
+| collection/data.id              |                  习题唯一标识                  |
+| collection/data.NO              |                   习题序号                   |
+| collection/data.question        |                    题干                    |
+| collection/data.selection       |             选项(***单选题限定***)              |
+| collection/data.selection.key   |                   选项名称                   |
+| collection/data.selection.value |                   选项内容                   |
+| collection/data.KN              |                   知识点                    |
+| collection/data.KNId            |                 知识点唯一标识                  |
+| collection/data.CR              |                   正确率                    |
+| collection/data.examine         |         考查能力(记忆、理解、运用、分析、评价、创新)          |
+| collection/data.CA              |                   正确答案                   |
+| collection/data.score           |               **主观题习题限定**                |
+| collection/data.IC              |   是否正确（true:正确， false）, ***非主观题目限定***    |
+| collection/data.answer          |                   我的答案                   |
 
 
 
@@ -494,9 +509,9 @@
 
 **参数：**
 
-| 参数   | 是否必须 |  说明   |
-| ---- | :--: | :---: |
-| id   |  是   | 已完成试卷 |
+| 参数   | 是否必须 |   说明    |
+| ---- | :--: | :-----: |
+| id   |  是   | 已完成试卷id |
 
 **返回结果:**
 
@@ -505,7 +520,7 @@
 ```json
 {
   "code": 0,
-  "totalScore": 85,
+  "score": 85,
   "classRank": 12,
   "classSize": 50,
   "gradeRank": 18,
@@ -516,16 +531,16 @@
   "ON" : 10,
   "OC": 15,
   "OS": 30,
-  "competence": [
-   	{"name": "理解能力", "points": 10},
-  ]
+  "competence": {
+      {"name": "理解能力", "points":{"class":10, "own":10}},
+  }
   "data": [
    {
      "KNId": "1",
      "KN": "立体几何",
      "process": 0.03
      "map":[
-       {"id": "1", "no": "1", "points": 20, "score": 16, "avg": 14.25}
+       {"id": "1", "NO": "1", "points": 20, "score": 16, "avg": 14.25}
      ]
    } 
   ]
@@ -541,29 +556,77 @@
 }
 ```
 
-| 参数                |      描述      |
-| ----------------- | :----------: |
-| totalScore        |     总得分      |
-| classRank         |     班级排名     |
-| gradeRank         |     年纪排名     |
-| SN                |    主观题数量     |
-| STP               |    主观题总分     |
-| STS               |    主观题得分     |
-| ON                |    客观题数量     |
-| OC                |   客观题正确数量    |
-| OS                |    客观题得分     |
-| competence        |     素养列表     |
-| competence.name   |     素养名称     |
-| competence.points |     素养得分     |
-| KNId              |    知识点id     |
-| KN                |    知识点名称     |
-| process           |     达成度      |
-| map               | 同一知识点下面试题的集合 |
-| map.id            |     试题id     |
-| map.no            |  试题在本卷中的题号   |
-| map.points        |    试题的分值     |
-| map.score         |   该试题我的得分    |
-| map.avg           |   该试题班级得分    |
+| 参数                      |      描述      |
+| ----------------------- | :----------: |
+| score                   |     总得分      |
+| classRank               |     班级排名     |
+| gradeRank               |     年纪排名     |
+| SN                      |    主观题数量     |
+| STP                     |    主观题总分     |
+| STS                     |    主观题得分     |
+| ON                      |    客观题数量     |
+| OC                      |   客观题正确数量    |
+| OS                      |    客观题得分     |
+| competence              |     素养列表     |
+| competence.name         |     素养名称     |
+| competence.points       |     素养值      |
+| competence.points.class |    班级素养值     |
+| competence.points.own   |    个人素养值     |
+| KNId                    |    知识点id     |
+| KN                      |    知识点名称     |
+| process                 |     达成度      |
+| map                     | 同一知识点下面试题的集合 |
+| map.id                  |     试题id     |
+| map.NO                  |  试题在本卷中的题号   |
+| map.points              |    试题的分值     |
+| map.score               |   该试题我的得分    |
+| map.avg                 |   该试题班级得分    |
+
+
+
+#### 新增语音备注/反思 
+
+**描述：**
+
+- 给指定习题添加语音备注(正确题目)
+- 给指定习题添加语音反思(错误题目)
+
+**请求URL：**
+
+- /api/practise/question/:id/remark/
+
+**请求方式:**
+
+- POST
+
+**参数：**
+
+| 参数      | 是否必须 |  说明  |
+| ------- | :--: | :--: |
+| id      |  是   | 习题id |
+| mediaId |  是   | 语音id |
+| pid     |  是   | 练习id |
+
+**返回结果:**
+
+*成功*
+
+```json
+{
+  "code":0
+}
+```
+
+*失败*
+
+```json
+{
+  "code":4020,
+  "errMessage": "语音信息不存在!"
+}
+```
+
+
 
 
 
@@ -745,7 +808,7 @@
 
 **请求URL：**
 
-- /api/raid/logs
+- /api/practise/raid/logs
 
 **请求方式:**
 
@@ -802,7 +865,7 @@
 
 **请求URL：**
 
-- /api/raid/log/:id/report
+- /api/practise/raid/log/:id/report
 
 **请求方式:**
 
@@ -861,7 +924,7 @@
 
 **请求URL：**
 
-- /api/raid/log/:id
+- /api/practise/raid/log/:id
 
 **请求方式:**
 
@@ -879,18 +942,23 @@
 
 ```json
 {
-  code:0,
-  data: [
+  "code":0,
+  "course": "chi",
+  "chapter": "第一章",
+  "checkpoint": 3,
+  "status": "failed",
+  "data": [
     {
       "type": "choice",
       "id": "1",
+      "NO": "1",
       "question": "1．下列各组词语中，没有错别字的一组是()",
-      "selection": {
-        "A": "涟漪        踌躇      气势磅薄     诎诎",
-        "B": "萧瑟        寂寥      诲莫如深     星辉斑澜",
-        "C": "尸骸        作揖      直截了当     切齿拊心",
-        "D": "夜缒        诽红      陨身不恤     秋毫无犯",
-      },
+      "selection": [
+  		{"key":"A", "value":"1096-1099"},
+		{"key":"B": "value":"1147-1148"},
+		{"key":"C", "value": "1189-1193"},
+        {"key":"D": "value": "1201-1204"}
+      ],
       "answer": "A",
       "CA": "A",
       "IC": true,
@@ -910,17 +978,24 @@
 }
 ```
 
-| 参数         |              描述               |
-| ---------- | :---------------------------: |
-| type       | 试题类型(choice:单选题,  blank: 填空题) |
-| id         |             题目标识              |
-| question   |              题干               |
-| selection  |      选择题选项(***选择题限定***)       |
-| answer     |             我的答案              |
-| CA         |             正确答案              |
-| IC         |    是否正确（true:正确，false:错误）     |
-| analysis   |             答案解析              |
-| isFavorate |   是否收藏(true:已收藏，false:未收藏)    |
+| 参数              |              描述               |
+| --------------- | :---------------------------: |
+| type            | 试题类型(choice:单选题,  blank: 填空题) |
+| id              |             题目标识              |
+| NO              |             题目序号              |
+| question        |              题干               |
+| selection       |      选择题选项(***选择题限定***)       |
+| selection.key   |             选项名称              |
+| selection.value |             选项内容              |
+| answer          |             我的答案              |
+| CA              |             正确答案              |
+| IC              |    是否正确（true:正确，false:错误）     |
+| analysis        |             答案解析              |
+| isFavorate      |   是否收藏(true:已收藏，false:未收藏)    |
+| course          |              科目               |
+| chapter         |             章节名称              |
+| checkpoint      |              关卡               |
+| status          |  闯关状态(success:成功, failed:失败)  |
 
 
 
@@ -932,7 +1007,7 @@
 
 **请求URL：**
 
-- /api/raid/KN/:id
+- /api/practise/raid/KN/:id
 
 **请求方式:**
 
@@ -971,16 +1046,16 @@
 }
 ```
 
-| 参数         |  描述   |
-| ---------- | :---: |
-| course     |  学科   |
-| module     |  模块名  |
-| chapter    |  章节   |
-| KN         |  知识点  |
-| KNId       | 知识点标识 |
-| checkpoint | 关卡层数  |
-| ability    | 总能力值  |
-| pass       |  过关   |
+| 参数            |   描述   |
+| ------------- | :----: |
+| course        |   学科   |
+| module        |  模块名   |
+| chapter       |   章节   |
+| KN            |  知识点   |
+| KNId          | 知识点标识  |
+| checkpoint    | 当前关卡层数 |
+| courseAbility | 学科能力值  |
+| passCount     |  过关人数  |
 
 
 
@@ -992,7 +1067,7 @@
 
 **请求URL：**
 
-- /api/raid/KN/:id/checkpoint/:checkpoint
+- /api/practise/raid/KN/:id/checkpoint/:checkpointId
 
 **请求方式:**
 
@@ -1003,7 +1078,7 @@
 | 参数         | 是否必须 |  说明   |
 | ---------- | :--: | :---: |
 | id         |  是   | 知识点id |
-| checkpoint |  是   |  关卡   |
+| checkpoint |  是   | 关卡层数  |
 
 **返回结果:**
 
@@ -1023,12 +1098,12 @@
     {
       "id": "1",
       "question": '第一次十字军东征的时间是？',
-      "selection": {
-        "A": "1096-1099",
-        "B": "1147-1148",
-        "C": "1189-1193",
-        "D": "1201-1204"
-    },
+      "selection": [
+  		{"key":"A", "value":"1096-1099"},
+		{"key":"B": "value":"1147-1148"},
+		{"key":"C", "value": "1189-1193"},
+        {"key":"D": "value": "1201-1204"}
+      ],
   ]
 }
 ```
@@ -1042,19 +1117,21 @@
 }
 ```
 
-| 参数             |     描述      |
-| -------------- | :---------: |
-| course         |     学科      |
-| module         |     模块名     |
-| chapter        |     章节      |
-| KN             |     知识点     |
-| checkpoint     |    关卡层数     |
-| KNId           |    知识点标识    |
-| duration       | 做题时长(单位: 秒) |
-| data           |     选择      |
-| data.id        |    题目标识     |
-| data.question  |     题干      |
-| data.selection |    题目选项     |
+| 参数                   |     描述      |
+| -------------------- | :---------: |
+| course               |     学科      |
+| module               |     模块名     |
+| chapter              |     章节      |
+| KN                   |     知识点     |
+| checkpoint           |    关卡层数     |
+| KNId                 |    知识点标识    |
+| duration             | 做题时长(单位: 秒) |
+| data                 |    题目集合     |
+| data.id              |    题目标识     |
+| data.question        |     题干      |
+| data.selection       |    题目选项     |
+| data.selection.key   |    选项名称     |
+| data.selection.value |    选项内容     |
 
 
 
@@ -1066,7 +1143,7 @@
 
 **请求URL：**
 
-- /api/raid/KN/:id/checkpoint/:checkpoint
+- /api/practise/raid/KN/:id/checkpoint/:checkpoint
 
 **请求方式:**
 
@@ -1195,42 +1272,53 @@
 ```json
 {
   "code": 0,
-  "questions": 90
+  "questionCount": 90
   "totalMistakes": 90,
-  "KN": '古代诗文阅读',
-  "KNId": '1',
-  "children": [
+  "data": [
     {
-      "KN": "文章内容归纳，中心概括",
-      "KNId": "2"
+      "KN": '古代诗文阅读',
+      "KNId": '1',
       "children": [
-        "KN": "常见实词",
-      	"KNId": "3"
-      ]
+        {
+          "KN": "文章内容归纳，中心概括",
+          "KNId": "2"
+          "children": [
+            "KN": "常见实词",
+            "KNId": "3"
+          ]
+        },
+        {
+          "KN": "文章内容的理解"
+          "KNId": "4",
+          "collection": 9,
+          "mistakes": 4,
+        }
+  	  ]
     },
-    {
-      "KN": "文章内容的理解"
-      "KNId": "4",
-      "collection": 9,
-      "mistakes": 4,
-    }
+	{
+       "KN": "文章内容的理解1"
+       "KNId": "5",
+       "collection": 9,
+       "mistakes": 4,
+	}
   ]
 }
 ```
 
-| 参数                  |   描述   |
-| ------------------- | :----: |
-| KN                  |  知识点   |
-| KNId                | 知识点标识  |
-| children            |  子知识点  |
-| children.collection |  好题数量  |
-| children.mistakes   |  错题数量  |
-| questions           | 总的做题数量 |
-| totalMistakes       | 总的错题数量 |
+| 参数                  |        描述        |
+| ------------------- | :--------------: |
+| data                |      思维导图集合      |
+| data.KN             |       知识点        |
+| data.KNId           |      知识点标识       |
+| data.children       | 子知识点集合(***递归***) |
+| children.collection |       好题数量       |
+| children.mistakes   |       错题数量       |
+| questionCount       |      总的做题数量      |
+| totalMistakes       |      总的错题数量      |
 
 
 
-#### 收藏题目列表
+#### 已收藏题目列表
 
 **描述:**
 
@@ -1238,7 +1326,7 @@
 
 **请求URL：**
 
-- /api/practise/favorite
+- /api/practise/favorite/KN/:KNId
 
 **请求方式:**
 
@@ -1246,11 +1334,14 @@
 
 **参数：**
 
-| 参数   | 是否必须 |                  说明                  |
-| ---- | :--: | :----------------------------------: |
-| q    |  否   |          mistake：错题，无参数时为好题          |
-| date |  否   |       时间(YYYY-MM)  ***错题限定***        |
-| type |  否   | task:作业, exam:试卷, raid:闯关 ***错题限定*** |
+| 参数   | 是否必须 |                 说明                  |
+| ---- | :--: | :---------------------------------: |
+| q    |  否   |         mistake：错题，无参数时为好题          |
+| date |  否   |       时间(YYYY-MM)  ***错题限定***       |
+| type |  否   | task:作业，exam:试卷， raid:闯关 ***错题限定*** |
+| KNId |  是   |                知识点Id                |
+| page |  否   |                分页页码                 |
+| size |  否   |                分页条数                 |
 
 **返回结果:**
 
@@ -1261,17 +1352,17 @@
     "type": "choice",
     "id": "1",
     "title": '1．下列各组词语中，没有错别字的一组是（）',
-    "selection": {
-       "A": "涟漪        踌躇      气势磅薄     诎诎",
-       "B": "萧瑟        寂寥      诲莫如深     星辉斑澜",
-       "C": "尸骸        作揖      直截了当     切齿拊心",
-       "D": "夜缒        诽红      陨身不恤     秋毫无犯",
-    },
+    "selection": [
+       "key": "A", "value": "涟漪        踌躇      气势磅薄     诎诎",
+       "key": "B", "value": "萧瑟        寂寥      诲莫如深     星辉斑澜",
+       "key": "C", "value": "尸骸        作揖      直截了当     切齿拊心",
+       "key": "D", "value": "夜缒        诽红      陨身不恤     秋毫无犯",
+    ],
     "from": {
       "date": "2017-05-30",
       "type": "task",
-      "course": "chi",
-      "id": "2"
+      "title": "语文作业",
+      "id": "1",
     }
   }
 }
@@ -1287,8 +1378,8 @@
 | from           |                   试题来源                   |
 | from.date      |                   练习时间                   |
 | from.type      |          练习类型(task:作业,exam:试卷)           |
-| from.course    |                    科目                    |
-| from.id        |                 练习/闯关id                  |
+| from.title     |                   练习名称                   |
+| from.id        |                 练习／闯关id                  |
 
 
 
@@ -1321,7 +1412,7 @@
 
 
 
-#### 好题解析
+#### 习题解析
 
 **描述:**
 
@@ -1329,7 +1420,7 @@
 
 **请求URL：**
 
-- /api/practise/favorite/:id
+- /api/practise/:pid/question/:id/analysis
 
 **请求方式:**
 
@@ -1339,7 +1430,8 @@
 
 | 参数   | 是否必须 |  说明  |
 | ---- | :--: | :--: |
-| id   |  是   | 题目ID |
+| id   |  是   | 题目id |
+| pid  |  是   | 练习id |
 
 **返回结果:**
 
@@ -1351,33 +1443,65 @@
   "type": "choice",
   "id": "1",
   "title": "1．下列各组词语中，没有错别字的一组是（）",
-  "selection": {
-    "A": "涟漪        踌躇      气势磅薄     诎诎",
-    "B": "萧瑟        寂寥      诲莫如深     星辉斑澜",
-    "C": "尸骸        作揖      直截了当     切齿拊心",
-    "D": "夜缒        诽红      陨身不恤     秋毫无犯",
-  },
+  "selection": [
+  		{"key":"A", "value":"1096-1099"},
+		{"key":"B": "value":"1147-1148"},
+		{"key":"C", "value": "1189-1193"},
+        {"key":"D": "value": "1201-1204"}
+      ],
   "from": {
     "date": "2017-05-30",
-    "task": "task",
-    "course": "chi"
+    "type": "task",
+    "title": "语文作业"
   },
   "answer": "A",
   "CA": "A",
   "IC": true,
   "CR": 0.6,
   "analysis": 'XXXXX',
-  "KN": "XXXX",
-  "remark": {
-    "type": "media",
-    "url": "XXX",
-  }
+  "KN": [
+    "XXXX"
+  ],
+  "remark": [
+    {
+      "type": "media",
+      "content": "XXX",
+  	}
+  ]
   "cause": [
     {"type": "text", "content":'看错'},
-    {type: 'media', url: 'XXX'}
+    {"type": "media", "content": 'XXX'}
   ]
 }
 ```
+
+```json
+#主观题
+{
+  "code": 0,
+  "type": "subjective",
+  "id": "1",
+  "title": "斯是陋室，唯吾德馨",
+  "answer": "XXXX",
+  "score": 5,
+  "CA": "这是简陋的房子，只是我的品德好",
+  "analysis": "XXXXX",
+  "IC": true,
+  "KN": ["XX"],
+  "remark": [
+    {
+      "type": "media",
+      "content": "XXX",
+  	}
+  ]
+  "cause": [
+    {"type": "text", "content":'看错'},
+    {"type": "media", "content": 'XXX'}
+  ]
+}
+```
+
+
 
 *失败*
 
@@ -1385,32 +1509,33 @@
 {code: 40010, errMessage: '找不到该试题！'}
 ```
 
-| 参数            |                    描述                    |
-| ------------- | :--------------------------------------: |
-| type          | 试题类型(choice:单选题,  blank: 填空题，  subjective:主观题目) |
-| title         |                   试题名称                   |
-| selection     |            选择题选项(***选择题限定***)            |
-| from          |                   试题来源                   |
-| from-date     |                   练习时间                   |
-| from-task     |      练习类型(task:作业,exam:试卷,raid:闯关)       |
-| from-course   |                    科目                    |
-| answer        |                   我的答案                   |
-| CA            |                   正确答案                   |
-| IC            |          是否正确（true:正确，false:错误）          |
-| CR            |                   正确率                    |
-| analysis      |                   答案分析                   |
-| KN            |                   知识点                    |
-| remark        |                    备注                    |
-| remark-type   |                   备注类型                   |
-| remark-url    |              ***多媒体备注限定***               |
-| cause         |                   错误原因                   |
-| cause-type    |      输出类型(media:多媒体（语音）, text: 文本)       |
-| cause-content |                ***文本限定***                |
-| cause-url     |             ***多媒体限定***，语音地址             |
+| 参数             |               描述               |
+| -------------- | :----------------------------: |
+| type           | 试题类型(choice:单选题,  blank: 填空题)  |
+| title          |              试题名称              |
+| selection      |       选择题选项(***选择题限定***)       |
+| from           |              试题来源              |
+| from.date      |              练习时间              |
+| from.type      | 练习类型(task:作业,exam:试卷,raid:闯关)  |
+| from.title     |              练习题目              |
+| answer         |              我的答案              |
+| CA             |              正确答案              |
+| IC             |     是否正确（true:正确，false:错误）     |
+| CR             |              正确率               |
+| analysis       |              答案分析              |
+| KN             |           知识点名称（集合）            |
+| remark         |             备注/反思              |
+| remark.type    |              备注类型              |
+| remark.content | 备注内容, ***type为media时，内容为url*** |
+| cause          |     错误原因(***IC为false限定***)     |
+| cause.type     | 输出类型(media:多媒体（语音）, text: 文本)  |
+| cause.content  | 错误原因, ***type为media时，内容为url*** |
 
 
 
-#### 提示信息
+### 消息
+
+#### 提示信息 
 
 **描述:**
 
@@ -1428,27 +1553,176 @@
 
 ```json
 {
-  code: 0,
-  data: [
+  "code": 0,
+  "data": [
     {
-      type: 'practice',
-      title: '第一单元检测'
-      course: 'math',
-      deadline: '2017-06-22',
-      auth: '王老师'
+      "type": "practice",
+      "title": "第一单元检测",
+      "course": "math",
+      "deadline": "2017-06-22",
+      "auth": "王老师"
     }
   ]
 }
 ```
 
-| 参数          |                    描述                    |
-| ----------- | :--------------------------------------: |
-| type        | practice: 新布置的作业, correct: 批改的作业, proposal：推荐 |
-| title       |                   练习标题                   |
-| course      |                    科目                    |
-| deadline    |           截止日期(***新布置作业限定***)            |
-| correctTime |            批改时间(***批改作业限定***)            |
-| time        |             推送日期(***推荐限定***)             |
+| 参数          |                描述                 |
+| ----------- | :-------------------------------: |
+| type        | practice: 新布置的作业, correct: 批改的作业, |
+| title       |               练习标题                |
+| course      |                科目                 |
+| deadline    |        截止日期(***新布置作业限定***)        |
+| correctTime |        批改时间(***批改作业限定***)         |
+| time        |         推送日期(***推荐限定***)          |
+
+
+
+### 公共接口
+
+#### 获取学科信息
+
+**描述:**
+
+- 获取用户学科、章节信息
+
+**请求URL：**
+
+- /api/common/course
+
+**请求方式:**
+
+- GET
+
+**参数：**
+
+无
+
+**返回结果:**
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "course": "chi",
+      "name": "语文",
+      "children": [
+        {
+          "id":"1",
+          "name": "模块1",
+          "children": [
+            "id":"2",
+            "name": "第一章"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+| 参数                 |   描述    |
+| ------------------ | :-----: |
+| data               | 学科信息列表  |
+| data.course        |   学科    |
+| data.name          |  学科名称   |
+| data.children      | 学科子节点集合 |
+| data.children.id   |  章节标识   |
+| data.children.name |  章节名称   |
+
+
+
+#### 图片上传
+
+**描述:**
+
+- 获取用户学科、章节信息
+
+**请求URL：**
+
+- /api/common/image/upload
+
+**请求方式:**
+
+- POST
+
+**参数：**
+
+无
+
+**返回结果:**
+
+*成功*
+
+```json
+{
+  "code":0,
+  "mediaId": "1",
+  "url": "XXXX"
+}
+```
+
+*失败*
+
+```json
+{
+  "code": 50001,
+  "url": "图片上传失败！"
+}
+```
+
+| 参数      |  描述   |
+| ------- | :---: |
+| mediaId | 多媒体标识 |
+
+
+
+
+
+#### 语音上传
+
+**描述:**
+
+- 获取用户学科、章节信息
+
+**请求URL：**
+
+- /api/common/voice/upload
+
+**请求方式:**
+
+- POST
+
+**参数：**
+
+无
+
+**返回结果:**
+
+*成功*
+
+```json
+{
+  "code":0,
+  "mediaId": "1",
+  "url": "XXXX"
+}
+```
+
+*失败*
+
+```json
+{
+  "code": 50002,
+  "url": "语音上传失败！"
+}
+```
+
+| 参数      |  描述   |
+| ------- | :---: |
+| mediaId | 多媒体标识 |
+
+
 
 
 
